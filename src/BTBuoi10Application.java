@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BTBuoi10Application {
     public static void main(String[] args) {
         /*
@@ -62,6 +64,25 @@ public class BTBuoi10Application {
             - In ra các đối tượng ô tô có cùng vận tốc
          */
         printDivider(4);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nNhập số lượng ô tô: ");
+        int n = sc.nextInt();
+        Oto[] ds = new Oto[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Nhập ô tô thứ " + (i + 1));
+            ds[i] = new Oto();
+            ds[i].nhap();
+        }
+
+        System.out.println("\n--- Danh sách ô tô ---");
+        for (Oto xe : ds) xe.xuat();
+
+        System.out.println("\n--- Các ô tô có cùng vận tốc tối đa với xe đầu tiên ---");
+        double vanToc = ds[0].getVanTocToiDa();
+        for (Oto xe : ds) {
+            if (xe.getVanTocToiDa() == vanToc) xe.xuat();
+        }
 
 
     }
